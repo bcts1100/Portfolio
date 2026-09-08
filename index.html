@@ -1,207 +1,32 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Timothy Jankowski - gameplay development, Unity/C# character scripting, rigging, and animation. Selected work from Wildblocks and Steeped.">
-  <meta name="theme-color" content="#111519">
-  <title>Timothy Jankowski | Gameplay Development</title>
-  <style>
-    :root { --bg:#111519; --panel:#191f24; --panel2:#202830; --text:#f1f3f4; --muted:#b6c1c8; --line:#34424c; --accent:#edbc84; --max:1140px; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; scroll-padding-top:30px; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:1.65; }
-    a { color:inherit; text-underline-offset:4px; }
-    a:focus-visible, summary:focus-visible, video:focus-visible { outline:3px solid var(--accent); outline-offset:5px; }
-    .wrap { width:min(var(--max), calc(100% - 64px)); margin:auto; }
-    .skip { position:absolute; left:20px; top:-80px; padding:12px 20px; background:var(--accent); color:var(--bg); z-index:20; }
-    .skip:focus { top:16px; }
-    header { padding:27px 0; }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { text-decoration:none; font-size:14px; font-weight:700; letter-spacing:.09em; display:flex; align-items:center; gap:12px; }
-    .monogram { display:grid; place-items:center; width:39px; height:39px; border:1px solid var(--line); color:var(--accent); }
-    nav { display:flex; gap:26px; font-size:14px; }
-    nav a { text-decoration:none; color:var(--muted); }
-    nav a:hover { color:var(--accent); }
-    .eyebrow { margin:0 0 17px; color:var(--accent); text-transform:uppercase; letter-spacing:.13em; font-size:12px; font-weight:700; }
-    .hero { display:grid; grid-template-columns:1.1fr 1fr; gap:54px; align-items:center; padding:53px 0 72px; }
-    h1 { font-size:clamp(38px,4.5vw,62px); line-height:1.07; letter-spacing:-.04em; margin:0 0 24px; }
-    h1 span { color:var(--accent); }
-    .intro { max-width:540px; color:var(--muted); font-size:18px; line-height:1.7; }
-    .buttons { display:flex; flex-wrap:wrap; gap:12px; margin-top:29px; }
-    .button { display:inline-flex; justify-content:center; align-items:center; gap:10px; padding:11px 18px; border:1px solid var(--line); text-decoration:none; font-size:14px; font-weight:700; min-height:46px; border-radius:5px; }
-    .button.primary { background:var(--accent); color:#141719; border-color:var(--accent); }
-    .button:hover { border-color:var(--accent); }
-    figure { margin:0; }
-    .hero-art { padding:12px; background:var(--panel); border:1px solid var(--line); border-radius:10px; }
-    .hero-art img { display:block; width:100%; height:auto; border-radius:5px; }
-    figcaption { color:var(--muted); font-size:12px; line-height:1.5; padding:12px 2px 2px; }
-    .tools { display:flex; gap:9px; flex-wrap:wrap; margin-top:26px; }
-    .tag { padding:4px 10px; font-size:12px; border:1px solid var(--line); color:var(--muted); border-radius:4px; }
-    .section { padding:25px 0 45px; }
-    .section-top { display:flex; gap:28px; justify-content:space-between; align-items:flex-end; margin:0 0 27px; }
-    h2 { margin:0; font-size:33px; letter-spacing:-.03em; line-height:1.2; }
-    .section-top p { max-width:425px; margin:0; color:var(--muted); font-size:14px; }
-    .project { background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:26px; }
-    .project-body { padding:33px 36px; }
-    .project-top { display:flex; align-items:flex-start; justify-content:space-between; gap:25px; margin-bottom:18px; }
-    h3 { font-size:28px; letter-spacing:-.02em; line-height:1.2; margin:0 0 6px; }
-    .project-subtitle { color:var(--muted); font-size:14px; margin:0; }
-    .status { color:var(--accent); font-size:12px; font-weight:700; border:1px solid #715a3f; border-radius:30px; padding:5px 11px; white-space:nowrap; }
-    .project-summary { font-size:16px; margin:0 0 24px; max-width:920px; color:var(--muted); }
-    .columns { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
-    h4 { font-size:12px; letter-spacing:.09em; text-transform:uppercase; margin:0 0 8px; color:var(--accent); }
-    .columns p { margin:0; font-size:15px; color:var(--muted); }
-    .media { padding:0 36px 32px; }
-    video { width:100%; height:auto; aspect-ratio:8 / 3; background:#06090c; display:block; border:1px solid var(--line); border-radius:5px; }
-    .media figcaption { padding-top:11px; }
-    .project-foot { padding:15px 36px; display:flex; gap:18px; flex-wrap:wrap; background:var(--panel2); color:var(--muted); font-size:12px; }
-    .steeped-grid { display:grid; grid-template-columns:1.35fr 1fr; gap:34px; }
-    .feature-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .feature { background:var(--panel2); padding:17px 18px; border-radius:5px; }
-    .feature span { color:var(--accent); display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; }
-    .feature strong { font-size:16px; font-weight:600; }
-    .note { margin:20px 0 0; color:var(--muted); font-size:14px; }
-    details { margin-top:24px; border-top:1px solid var(--line); padding-top:18px; }
-    summary { cursor:pointer; color:var(--accent); font-size:14px; font-weight:700; }
-    details p { margin:12px 0 0; color:var(--muted); font-size:14px; }
-    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; margin-top:28px; }
-    .skill-block { border-top:2px solid var(--line); padding-top:19px; }
-    .skill-block h3 { font-size:18px; line-height:1.3; }
-    .skill-block p { margin:10px 0 0; color:var(--muted); font-size:14px; }
-    .background { display:grid; grid-template-columns:.75fr 1.25fr; gap:50px; padding-top:22px; }
-    .background p { margin:0 0 15px; color:var(--muted); }
-    .background strong { color:var(--text); font-weight:600; }
-    .contact { margin:30px 0 55px; border:1px solid var(--line); background:var(--panel); padding:34px 36px; border-radius:10px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
-    .contact p { color:var(--muted); margin:9px 0 0; font-size:14px; }
-    .contact h2 { font-size:27px; }
-    .contact a { overflow-wrap:anywhere; }
-    .contact-links { display:flex; flex-direction:column; gap:10px; }
-    footer { padding:0 0 32px; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:25px; }
-    @media (max-width:880px) {
-      .hero { gap:27px; }
-      h1 { font-size:44px; }
-      .intro { font-size:16px; }
-      .steeped-grid { grid-template-columns:1fr; }
-      .contact { align-items:flex-start; flex-direction:column; }
-    }
-    @media (max-width:620px) {
-      .wrap { width:calc(100% - 36px); }
-      header { padding:20px 0 10px; }
-      .brand { font-size:12px; gap:8px; }
-      .monogram { width:33px; height:33px; }
-      nav { gap:15px; font-size:13px; }
-      nav .desktop-only { display:none; }
-      .hero { grid-template-columns:1fr; padding:40px 0 49px; gap:34px; }
-      h1 { font-size:43px; }
-      .hero-art { max-width:480px; }
-      .section { padding:15px 0 34px; }
-      .section-top { display:block; }
-      .section-top p { margin-top:13px; }
-      h2 { font-size:29px; }
-      .project-body { padding:25px 21px; }
-      .project-top { gap:12px; flex-wrap:wrap; }
-      .columns { grid-template-columns:1fr; gap:19px; }
-      .media { padding:0 13px 23px; }
-      .media figcaption { padding-left:8px; padding-right:8px; }
-      .project-foot { padding:14px 21px; gap:9px 16px; }
-      .feature { padding:13px; }
-      .skills-grid { grid-template-columns:1fr; gap:25px; }
-      .background { grid-template-columns:1fr; gap:20px; }
-      .contact { padding:26px 21px; margin-top:12px; }
-      footer { flex-direction:column; gap:8px; }
-    }
-    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
-  </style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="wrap">
-  <div class="nav">
-    <a class="brand" href="#main" aria-label="Timothy Jankowski, home"><span class="monogram">TJ</span> GAMEPLAY</a>
-    <nav aria-label="Main navigation">
-      <a href="#work">Work</a><a class="desktop-only" href="#skills">Skills</a><a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-<main id="main" class="wrap">
-  <section class="hero" aria-labelledby="intro-title">
-    <div>
-      <p class="eyebrow">Timothy Jankowski &nbsp;/&nbsp; Renton, WA</p>
-      <h1 id="intro-title">Gameplay systems.<br><span>Character motion.</span></h1>
-      <p class="intro">I build gameplay in Unity/C# and work with character rigs and animation in Blender and Autodesk Maya. My current projects include Steeped and Wildblocks.</p>
-      <div class="buttons"><a class="button primary" href="#work">Explore selected work <span aria-hidden="true">&darr;</span></a><a class="button" href="https://github.com/bcts1100" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&nearr;</span></a></div>
-      <div class="tools" aria-label="Primary tools"><span class="tag">Unity / C#</span><span class="tag">Blender</span><span class="tag">Autodesk Maya</span></div>
-    </div>
-    <figure class="hero-art">
-      <img src="assets/wildblocks-dragon.png" alt="A red-winged dragon character from Wildblocks, shown in a dark tiled game environment." width="1393" height="1088">
-      <figcaption>Wildblocks &middot; Character work in progress</figcaption>
-    </figure>
-  </section>
-
-  <section class="section" id="work" aria-labelledby="work-title">
-    <div class="section-top"><h2 id="work-title">Selected gameplay work</h2><p>Independent projects spanning gameplay scripting, character systems, and animation.</p></div>
-
-    <article class="project" aria-labelledby="wildblocks-title">
-      <div class="project-body">
-        <div class="project-top"><div><h3 id="wildblocks-title">Wildblocks</h3><p class="project-subtitle">Gameplay development &middot; Character rigging &amp; animation</p></div><span class="status">In development</span></div>
-        <p class="project-summary">My work includes character movement, player abilities, boss behavior, and character rigging and animation. The gameplay sample below shows a solo encounter from the project.</p>
-        <div class="columns">
-          <div><h4>Gameplay contribution</h4><p>Implementing character movement, abilities, and boss behaviors, alongside development of the systems that drive character actions.</p></div>
-          <div><h4>Character contribution</h4><p>Rigging and animating game characters, including the dragon shown here, as part of my hands-on development work.</p></div>
-        </div>
-      </div>
-      <figure class="media">
-        <video controls playsinline preload="metadata" poster="assets/wildblocks-gameplay-poster.jpg" aria-label="Wildblocks solo dragon encounter gameplay, silent video" aria-describedby="wildblocks-video-caption">
-          <source src="assets/wildblocks-gameplay.mp4" type="video/mp4">
-          Your browser does not support embedded video. <a href="assets/wildblocks-gameplay.mp4">Open the gameplay video.</a>
-        </video>
-        <figcaption id="wildblocks-video-caption">Gameplay excerpt &middot; Solo dragon encounter &middot; Silent capture<br>Player movement, ability use, and the encounter's conclusion. Prototype visuals and interface.</figcaption>
-      </figure>
-      <div class="project-foot"><span>Character scripting</span><span>Player abilities</span><span>Boss behavior</span><span>Rigging &amp; animation</span></div>
-    </article>
-
-    <article class="project" aria-labelledby="steeped-title">
-      <div class="project-body">
-        <div class="project-top"><div><h3 id="steeped-title">Steeped</h3><p class="project-subtitle">Unity 6 / C# &middot; 2D top-down farming &amp; tea-shop game</p></div><span class="status">In development</span></div>
-        <div class="steeped-grid">
-          <div><h4>Current implementation work</h4><p class="project-summary">I am developing C# character scripts for movement, attacks, abilities, and mining interactions. My work also includes player input, directional actions, and camera framing for top-down play.</p><h4>Animation &amp; action readability</h4><p class="note">Refining four-direction scythe, hoe, and axe actions, including facing consistency, smoother motion, and the readability of harvesting sweeps.</p></div>
-          <div class="feature-list" aria-label="Current character scripting areas">
-            <div class="feature"><span>Character scripting</span><strong>Movement</strong></div>
-            <div class="feature"><span>Character scripting</span><strong>Attacks</strong></div>
-            <div class="feature"><span>Character scripting</span><strong>Abilities</strong></div>
-            <div class="feature"><span>World interactions</span><strong>Mining</strong></div>
-          </div>
-        </div>
-        <details><summary>Resource-system design scope</summary><p>Design specifications cover tool requirements, resource health, seasonal spawning, and regrowth. These specifications are distinct from the character-scripting implementation described above.</p></details>
-        <!-- Add a real Steeped gameplay capture here after recording and reviewing it. -->
-      </div>
-      <div class="project-foot"><span>Unity 6</span><span>C#</span><span>Character controls</span><span>Directional actions</span><span>Reusable interaction rules</span></div>
-    </article>
-  </section>
-
-  <section class="section" id="skills" aria-labelledby="skills-title">
-    <p class="eyebrow">Technical range</p><h2 id="skills-title">From gameplay code to character work.</h2>
-    <div class="skills-grid">
-      <div class="skill-block"><h3>Gameplay implementation</h3><p>Unity and C#; character movement, attacks, ability systems, enemy behavior, and mining interactions.</p></div>
-      <div class="skill-block"><h3>Rigging &amp; animation</h3><p>Blender and Autodesk Maya; character rigging, animation, and directional action work.</p></div>
-      <div class="skill-block"><h3>Software engineering</h3><p>Python, TypeScript, JavaScript, React, Next.js, and FastAPI; building applications and supporting systems beyond games.</p></div>
-    </div>
-  </section>
-
-  <section class="section background" aria-labelledby="background-title">
-    <div><p class="eyebrow">Background</p><h2 id="background-title">Development.<br>Ownership.<br>Team leadership.</h2></div>
-    <div><p><strong>Independent and academic game development</strong>, supported by professional leadership experience at Boeing and in the U.S. Marine Corps.</p><p><strong>Academy of Art University</strong><br>Game Development coursework, 2017&ndash;2019.<br>Resuming studies in 2026.</p></div>
-  </section>
-
-  <section class="contact" id="contact" aria-labelledby="contact-title">
-    <div><p class="eyebrow">Contact</p><h2 id="contact-title">Let's talk about gameplay.</h2><p>Timothy Jankowski &middot; Renton, Washington</p></div>
-    <div class="contact-links">
-      <a class="button primary" href="mailto:wreckski57@gmail.com">wreckski57@gmail.com <span aria-hidden="true">&nearr;</span></a>
-      <a class="button" href="https://www.linkedin.com/in/tim-jankowski-2838b72a6" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&nearr;</span></a>
-    </div>
-  </section>
-</main>
-<footer class="wrap"><span>Timothy Jankowski &middot; Gameplay development &amp; design</span><a href="https://github.com/bcts1100" target="_blank" rel="noopener noreferrer">GitHub / bcts1100</a></footer>
-</body>
-</html>
+<html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timothy Jankowski | Gameplay Developer & Designer</title><meta name="description" content="Gameplay development, Unity/C# character systems, rigging and animation. Explore Wildblocks, Steeped and MINE AND GRIND."><meta name="theme-color" content="#f5f2e9">
+<meta property="og:type" content="website"><meta property="og:title" content="Timothy Jankowski | Gameplay Developer & Designer"><meta property="og:description" content="Gameplay development, Unity/C# character systems, rigging and animation. Explore Wildblocks, Steeped and MINE AND GRIND."><meta property="og:image" content="assets/images/social-preview.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script src="site.js" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap nav-row">
+ <a class="brand" href="index.html" aria-label="Timothy Jankowski, portfolio home"><span class="brand-mark" aria-hidden="true">TJ</span><span class="brand-name">Timothy Jankowski<small>Gameplay developer &amp; designer</small></span></a>
+ <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">Menu +</button>
+ <nav class="nav-links" id="main-nav" aria-label="Main navigation"><a href="index.html#work">Selected work</a><a href="index.html#toolkit">Toolkit</a><a href="index.html#about">About</a><a class="nav-cta" href="#contact">Let&rsquo;s talk <span aria-hidden="true">&#8599;</span></a></nav>
+</div></header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="hero-title">
+ <div class="hero-copy"><p class="eyebrow"><span class="dot" aria-hidden="true"></span>Independent development / Selected work</p><h1 id="hero-title"><span>Code.</span><span>Characters.</span><span class="play-word">Play.</span></h1><p class="hero-intro">I&rsquo;m Tim. I turn gameplay ideas into working systems&mdash;from character controls and boss encounters to rigs that bring creatures to life.</p><div class="button-row"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">&darr;</span></a><a class="button secondary" href="#reel"><span aria-hidden="true">&#9655;</span> Watch gameplay</a></div><div class="hero-tools" aria-label="Core tools"><span>UNITY / C#</span><span>BLENDER</span><span>AUTODESK MAYA</span></div></div>
+ <div class="scene-stack" aria-label="Selected project previews"><div class="dev-stamp" aria-hidden="true">FROM CODE<br>TO<br>PLAYABLE</div><div class="scene-frame"><div class="scene-top"><span>LIVE FROM THE EDITOR</span><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span></div><img class="scene-image" id="scene-image" src="assets/images/steeped-7.webp" alt="Steeped gameplay: a pixel-art tea house, paths and a player character." width="736" height="436" fetchpriority="high"><div class="scene-footer"><div aria-live="polite"><strong id="scene-title">Steeped</strong><small id="scene-detail">UNITY 6 / C# / 2D</small></div><div class="scene-selector" aria-label="Switch project preview"><button type="button" data-scene="wildblocks" aria-label="Preview Wildblocks" aria-pressed="false">01</button><button type="button" data-scene="steeped" aria-label="Preview Steeped" aria-pressed="true">02</button><button type="button" data-scene="mine-and-grind" aria-label="Preview MINE AND GRIND" aria-pressed="false">03</button></div></div></div><a class="float-card" href="projects/wildblocks.html" aria-label="Explore the Wildblocks project"><img src="assets/images/dragon.webp" alt="The red-winged Wildblocks dragon character." width="1393" height="1088"><span>WILDBLOCKS <span aria-hidden="true">&#8599;</span></span></a><p class="hero-caption">REAL PROJECTS.<br>WORK IN PROGRESS.</p></div>
+</section>
+<div class="ticker" aria-label="Development focus"><div class="wrap"><span>Gameplay scripting</span><b aria-hidden="true">+</b><span>Character systems</span><b aria-hidden="true">+</b><span>Rigging &amp; animation</span><b class="desktop-ticker" aria-hidden="true">+</b><span class="desktop-ticker">Renton, WA</span></div></div>
+<section class="section wrap" id="work" aria-labelledby="work-title"><div class="section-heading"><div><p class="eyebrow">01 / Selected projects</p><h2 id="work-title">Select a world.</h2></div><p>Different worlds. Different kinds of play.<br>A closer look at the projects I&rsquo;m building and the work behind them.</p></div><div class="project-grid"><a class="project-card" href="projects/wildblocks.html" style="--card-color:#efd1bf"><div class="card-art"><span class="card-number">01 / IN DEVELOPMENT</span><img src="assets/images/wildblocks.webp" alt="A player faces the dragon in Wildblocks." width="736" height="436" loading="lazy" decoding="async"></div><div class="card-body"><div class="card-kicker">3D / Character systems</div><h3>Wildblocks</h3><p>Player abilities, boss behavior, and the character work behind a dragon encounter.</p><div class="card-bottom"><span>Explore the project</span><span class="arrow-disc" aria-hidden="true">&#8599;</span></div></div></a><a class="project-card" href="projects/steeped.html" style="--card-color:#d9e5c9"><div class="card-art"><span class="card-number">02 / IN DEVELOPMENT</span><img src="assets/images/steeped-7.webp" alt="A pixel-art tea-house environment from Steeped." width="736" height="436" loading="lazy" decoding="async"></div><div class="card-body"><div class="card-kicker">Unity 6 / C# / 2D</div><h3>Steeped</h3><p>A tea-farming game built around character controls, directional actions, and world interactions.</p><div class="card-bottom"><span>Explore the project</span><span class="arrow-disc" aria-hidden="true">&#8599;</span></div></div></a><a class="project-card" href="projects/mine-and-grind.html" style="--card-color:#e1d9ef"><div class="card-art"><span class="card-number">03 / IN DEVELOPMENT</span><img src="assets/images/mine-and-grind.webp" alt="An avatar explores the MINE AND GRIND prototype." width="736" height="436" loading="lazy" decoding="async"></div><div class="card-body"><div class="card-kicker">Roblox / Mining prototype</div><h3>MINE AND GRIND</h3><p>A mining-game prototype with exploration, a companion, and progression-oriented interface design.</p><div class="card-bottom"><span>Explore the project</span><span class="arrow-disc" aria-hidden="true">&#8599;</span></div></div></a></div></section>
+<section class="reel-section" id="reel" aria-labelledby="reel-title"><div class="wrap reel-grid"><div class="reel-copy"><p class="eyebrow">02 / In motion</p><h2 id="reel-title">Less talking.<br>More playing.</h2><p>Start with a quick reel, then switch to a longer project clip. Real development footage, with the desktop distractions left out.</p><p class="reel-note">NO CINEMATIC STAND-INS.<br>JUST THE WORK, RUNNING.</p></div><div>
+ <div class="media-tabs" role="tablist" aria-label="Choose gameplay video"><button type="button" role="tab" id="tab-reel" data-clip="reel" aria-selected="true" aria-controls="reel-panel">Showreel</button><button type="button" role="tab" id="tab-wildblocks" data-clip="wildblocks" aria-selected="false" tabindex="-1" aria-controls="reel-panel">Wildblocks</button><button type="button" role="tab" id="tab-steeped" data-clip="steeped" aria-selected="false" tabindex="-1" aria-controls="reel-panel">Steeped</button><button type="button" role="tab" id="tab-mine-and-grind" data-clip="mine-and-grind" aria-selected="false" tabindex="-1" aria-controls="reel-panel">Mine &amp; Grind</button></div>
+ <div id="reel-panel" role="tabpanel" aria-labelledby="tab-reel" tabindex="0"><div class="video-frame"><video id="reel-player" controls playsinline preload="none" poster="assets/images/steeped-7.webp" aria-label="A silent 48-second reel of Wildblocks, Steeped and MINE AND GRIND gameplay" aria-describedby="clip-description"><source src="assets/video/showreel.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/video/showreel.mp4">Open the reel.</a></video></div><p class="video-error" hidden>Could not load this video. <a id="video-fallback" href="assets/video/showreel.mp4">Open the video file directly.</a></p><div class="video-meta"><strong id="clip-title">SELECTED GAMEPLAY / 00:48</strong><span>SILENT CAPTURE &middot; WIP</span></div><p class="video-description" id="clip-description">A quick look at Wildblocks combat, Steeped movement, and MINE AND GRIND exploration. Edited from development captures; silent.</p><details class="description-toggle"><summary>Text description of the footage</summary><p id="clip-transcript">0:00&ndash;0:16: A Wildblocks dragon encounter with character movement, attacks and ability feedback. 0:16&ndash;0:32: A Steeped player moves around a pixel-art tea-house environment while the camera follows. 0:32&ndash;0:48: A MINE AND GRIND avatar and companion move through a mine environment toward a resource.</p></details></div>
+</div></div></section>
+<section class="section wrap" id="toolkit" aria-labelledby="toolkit-title"><div class="section-heading"><div><p class="eyebrow">03 / The toolkit</p><h2 id="toolkit-title">Hands on. End to end.</h2></div><p>I work across gameplay code and character production, connecting how an action works with how it looks and feels.</p></div><div class="tool-grid">
+ <article class="tool-card"><div class="tool-head"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 5 2 12l6 7M16 5l6 7-6 7M14 3l-4 18"/></svg></div><span>01 / CODE</span></div><h3>Gameplay &amp; controls</h3><p>Character movement, attacks, abilities, enemy behavior, and mining interactions. Hands-on scripting in Unity and C#.</p><p class="tool-tags">UNITY 6 &middot; C# &middot; CHARACTER SCRIPTING</p></article>
+ <article class="tool-card"><div class="tool-head"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg></div><span>02 / CHARACTER</span></div><h3>Rigging &amp; animation</h3><p>Character rigs and animation in Blender and Autodesk Maya, alongside directional action work and gameplay integration.</p><p class="tool-tags">BLENDER &middot; MAYA &middot; CHARACTER MOTION</p></article>
+ <article class="tool-card"><div class="tool-head"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="8" height="7" rx="1"/><rect x="14" y="14" width="8" height="7" rx="1"/><path d="M10 6h8v8M14 18H6v-8m9 1 3 3 3-3"/></svg></div><span>03 / DESIGN</span></div><h3>Systems &amp; iteration</h3><p>Defining tool interactions, readable player actions, and resource rules. Taking a feature from a design intention into a working prototype.</p><p class="tool-tags">PROTOTYPING &middot; ACTION READABILITY</p></article>
+</div><div class="engineering-line"><b>Beyond the game engine</b><span>Python &middot; TypeScript / JavaScript &middot; React &middot; Next.js &middot; FastAPI</span></div></section>
+<section class="wrap" id="about" aria-labelledby="about-title"><div class="about-panel"><div><p class="eyebrow">04 / Behind the build</p><h2 id="about-title">A developer.<br>A problem solver.<br>A teammate.</h2><p>My game-development work spans independent projects and university coursework. I enjoy moving between the technical and creative sides of a feature&mdash;writing the behavior, working on the character, and seeing it come together in the game.</p></div><div class="about-details"><div class="about-item"><h3>Game development</h3><p>Academy of Art University<br>Coursework, 2017&ndash;2019. Resuming studies in 2026.</p></div><div class="about-item"><h3>Technical leadership</h3><p>Boeing manufacturing-management and functional-test team-lead experience, with a focus on coordination and responsibility.</p></div><div class="about-item"><h3>Service &amp; teamwork</h3><p>U.S. Marine Corps veteran. A background in supervising, training, and supporting teams.</p></div></div></div></section>
+</main><section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap">
+ <div class="contact-panel"><div><p class="eyebrow">Next level / Let&rsquo;s work together</p><h2 id="contact-title">Let&rsquo;s make something<br><em>worth playing.</em></h2></div><a class="button primary" href="mailto:wreckski57@gmail.com">Start a conversation <span aria-hidden="true">&#8599;</span></a></div>
+ <div class="contact-links"><a class="email" href="mailto:wreckski57@gmail.com">wreckski57@gmail.com</a><div class="socials"><a href="https://www.linkedin.com/in/tim-jankowski-2838b72a6" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&#8599;</span></a><a href="https://github.com/bcts1100" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a><a href="assets/docs/Timothy-Jankowski-Resume.docx" download>Resume <span class="muted">/ DOCX</span> &darr;</a></div></div>
+</div></section>
+<footer class="site-footer wrap"><span>&copy; 2026 Timothy Jankowski &middot; Renton, Washington</span><span>Gameplay development. Character work. Still building.</span><a href="#main">Back to top &uarr;</a></footer></body></html>
