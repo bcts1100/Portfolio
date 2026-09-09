@@ -1,6 +1,6 @@
-# Timothy Jankowski - Game Developer Portfolio
+# Timothy Jankowski - Gameplay and UX/UI Portfolio
 
-Rebuilt September 8, 2026. This package is a complete static website, not a mockup.
+Updated September 9, 2026. This package is a complete static website, not a mockup.
 Nothing has been published or changed in your GitHub account.
 
 ## Preview on your Windows PC
@@ -17,6 +17,11 @@ The interactive scene selector and video tabs use a normal script, not a module 
 
 - A new cream / forest-green / coral homepage, with interactive project previews.
 - Dedicated pages for Wildblocks, Steeped, and MINE AND GRIND.
+- A homepage UX/UI & Interaction Design section using four supplied interface studies.
+- Dedicated case studies for Player Profile & Stats UI, Coin Store UI, Game HUD & Controls UI,
+  and the UI Frame & Component System.
+- A Design Approach section connecting readability, hierarchy, feedback, affordances,
+  consistency, systems thinking, rapid prototyping, and AI-assisted workflows.
 - A 48-second edited showreel, plus three longer project clips.
 - Real gameplay stills and a Unity editor image from your captures.
 - Mobile navigation, keyboard-operated video tabs, visible focus states, reduced-motion styling,
